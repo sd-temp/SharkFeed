@@ -13,7 +13,7 @@ import java.io.File;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import nucleus5.presenter.RxPresenter;
 
-class GridPresenter extends RxPresenter<GridFragment> {
+public class GridPresenter extends RxPresenter<GridFragment> {
 
     private static final int GET_NEXT_ITEMS = 100;
     private static final int GET_HQ_IMAGE = 200;
