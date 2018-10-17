@@ -14,6 +14,7 @@ import org.json.JSONObject;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
 import io.reactivex.Observable;
@@ -152,12 +153,14 @@ public class DataManager {
     public Observable<String> getImageFile(Bitmap bitmap, String title) {
         return Observable.create(emitter -> {
             try {
+                String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss")
+                        .format(System.currentTimeMillis());
                 File storageDir = new File(Environment
                         .getExternalStoragePublicDirectory(Environment.DIRECTORY_DCIM) + "/Camera/");
                 if (!storageDir.exists())
                     storageDir.mkdirs();
                 File file = File.createTempFile(
-                        title,
+                        "sharkfeed_"+timeStamp,
                         ".jpeg",
                         storageDir);
                 FileOutputStream ostream = new FileOutputStream(file);
